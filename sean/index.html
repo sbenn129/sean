@@ -86,7 +86,7 @@ body {
 .name {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: clamp(40px, 10vw, 58px);
+  font-size: clamp(38px, 10vw, 58px);
   letter-spacing: 2px;
   color: #f5a623;
   -webkit-text-stroke: 2px #000;
@@ -102,7 +102,7 @@ body {
 .tagline {
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
-  font-size: clamp(13px, 5vw, 15px);
+  font-size: clamp(11px, 3vw, 15px);
   color: #ffffff;
   opacity: 0.85;
   margin-bottom: 32px;
@@ -115,7 +115,6 @@ body {
   white-space: nowrap;
 }
 
-/* Socials */
 .socials {
   display: flex;
   gap: 22px;
@@ -139,13 +138,11 @@ body {
 .social-btn.facebook  { background: #1877f2; }
 .social-btn.youtube   { background: #ff0000; }
 
-/* Buttons */
 .links {
   display: flex;
   flex-direction: column;
   gap: 16px;
   width: calc(100% - 40px);
-  margin-bottom: 0;
 }
 
 .link-btn {
@@ -195,7 +192,6 @@ body {
   transition: fill 0.3s ease;
 }
 
-/* Letter roll */
 .roll-text { display: inline-flex; align-items: center; }
 .roll-space { display: inline-block; width: 0.35em; flex-shrink: 0; }
 .roll-char {
@@ -221,7 +217,6 @@ body {
   white-space: nowrap;
   letter-spacing: 1px;
   color: #000;
-  transition: color 0.3s ease;
 }
 .link-btn:hover .roll-char-inner,
 .link-btn:active .roll-char-inner {
@@ -248,6 +243,24 @@ body {
     transition: none !important;
   }
 }
+
+/* Per-character stagger on hover */
+.link-btn:hover .roll-char:nth-child(1) .roll-char-inner { transition-delay: 0.000s; }
+.link-btn:hover .roll-char:nth-child(2) .roll-char-inner { transition-delay: 0.045s; }
+.link-btn:hover .roll-char:nth-child(3) .roll-char-inner { transition-delay: 0.090s; }
+.link-btn:hover .roll-char:nth-child(4) .roll-char-inner { transition-delay: 0.135s; }
+.link-btn:hover .roll-char:nth-child(5) .roll-char-inner { transition-delay: 0.180s; }
+.link-btn:hover .roll-char:nth-child(6) .roll-char-inner { transition-delay: 0.225s; }
+.link-btn:hover .roll-char:nth-child(7) .roll-char-inner { transition-delay: 0.270s; }
+.link-btn:hover .roll-char:nth-child(8) .roll-char-inner { transition-delay: 0.315s; }
+.link-btn:hover .roll-char:nth-child(9) .roll-char-inner { transition-delay: 0.360s; }
+.link-btn:hover .roll-char:nth-child(10) .roll-char-inner { transition-delay: 0.405s; }
+.link-btn:hover .roll-char:nth-child(11) .roll-char-inner { transition-delay: 0.450s; }
+.link-btn:hover .roll-char:nth-child(12) .roll-char-inner { transition-delay: 0.495s; }
+.link-btn:hover .roll-char:nth-child(13) .roll-char-inner { transition-delay: 0.540s; }
+.link-btn:hover .roll-char:nth-child(14) .roll-char-inner { transition-delay: 0.585s; }
+.link-btn:hover .roll-char:nth-child(15) .roll-char-inner { transition-delay: 0.630s; }
+```
 
   </style>
 </head>
@@ -283,47 +296,79 @@ body {
   </a>
 </div>
 
-<div class="links" id="links"></div>
+<div class="links">
+
+  <a href="https://linkedin.com/in/seanbennett" class="link-btn" target="_blank" rel="noopener">
+    <span class="link-btn-inner">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <span class="roll-text">
+        <span class="roll-char"><span class="roll-char-inner"><span>J</span><span>J</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>O</span><span>O</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>I</span><span>I</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>N</span><span>N</span></span></span>
+        <span class="roll-space"></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>M</span><span>M</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>Y</span><span>Y</span></span></span>
+        <span class="roll-space"></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>N</span><span>N</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>E</span><span>E</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>T</span><span>T</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>W</span><span>W</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>O</span><span>O</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>R</span><span>R</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>K</span><span>K</span></span></span>
+      </span>
+    </span>
+  </a>
+
+  <a href="https://resume.bennett.ws" class="link-btn" target="_blank" rel="noopener">
+    <span class="link-btn-inner">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg>
+      <span class="roll-text">
+        <span class="roll-char"><span class="roll-char-inner"><span>V</span><span>V</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>I</span><span>I</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>E</span><span>E</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>W</span><span>W</span></span></span>
+        <span class="roll-space"></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>M</span><span>M</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>Y</span><span>Y</span></span></span>
+        <span class="roll-space"></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>R</span><span>R</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>E</span><span>E</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>S</span><span>S</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>U</span><span>U</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>M</span><span>M</span></span></span>
+        <span class="roll-char" style="overflow:clip; height:1.3em; line-height:1.3em;"><span class="roll-char-inner"><span>&#201;</span><span>&#201;</span></span></span>
+      </span>
+    </span>
+  </a>
+
+  <a href="mailto:sean@bennett.ws" class="link-btn">
+    <span class="link-btn-inner">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      <span class="roll-text">
+        <span class="roll-char"><span class="roll-char-inner"><span>S</span><span>S</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>E</span><span>E</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>N</span><span>N</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>D</span><span>D</span></span></span>
+        <span class="roll-space"></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>M</span><span>M</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>E</span><span>E</span></span></span>
+        <span class="roll-space"></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>A</span><span>A</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>N</span><span>N</span></span></span>
+        <span class="roll-space"></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>E</span><span>E</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>M</span><span>M</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>A</span><span>A</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>I</span><span>I</span></span></span>
+        <span class="roll-char"><span class="roll-char-inner"><span>L</span><span>L</span></span></span>
+      </span>
+    </span>
+  </a>
+
+</div>
 
   </main>
-
-  <script>
-    const buttons = [
-      {
-        href: 'https://linkedin.com/in/sbenn129',
-        label: 'JOIN MY NETWORK',
-        icon: `<svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`
-      },
-      {
-        href: 'https://sean.bennett.ws/resume',
-        label: 'VIEW MY RESUME',
-        icon: `<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg>`
-      },
-      {
-        href: 'mailto:sean@bennett.ws',
-        label: 'SEND ME AN EMAIL',
-        icon: `<svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>`
-      }
-    ];
-
-    function makeRoll(label) {
-      return label.split('').map(ch => {
-        if (ch === ' ') return `<span class="roll-space"></span>`;
-        const esc = ch.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-        return `<span class="roll-char"><span class="roll-char-inner"><span>${esc}</span><span>${esc}</span></span></span>`;
-      }).join('');
-    }
-
-    const container = document.getElementById('links');
-    buttons.forEach(b => {
-      const a = document.createElement('a');
-      a.href = b.href;
-      a.className = 'link-btn';
-      if (!b.href.startsWith('mailto')) { a.target = '_blank'; a.rel = 'noopener'; }
-      a.innerHTML = `<span class="link-btn-inner">${b.icon}<span class="roll-text">${makeRoll(b.label)}</span></span>`;
-      container.appendChild(a);
-    });
-  </script>
-
 </body>
 </html>
