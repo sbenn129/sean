@@ -1,1 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sean Bennett — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<style>
+  [data-theme="dark"] {
+    --bg:           #0f0f0f;
+    --bg-card:      #1a1a1a;
+    --border:       #2a2a2a;
+    --text-primary: #f0f0f0;
+    --text-muted:   #888888;
+    --accent:       #2dd4bf;
+    --accent-glow:  rgba(45, 212, 191, 0.15);
+    --btn-bg:       #1e1e1e;
+    --btn-hover:    #2c2c2c;
+    --toggle-bg:    #2a2a2a;
+  }
+
+  [data-theme="light"] {
+    --bg:           #f5f5f5;
+    --bg-card:      #ffffff;
+    --border:       #e0e0e0;
+    --text-primary: #111111;
+    --text-muted:   #666666;
+    --accent:       #0d9488;
+    --accent-glow:  rgba(13, 148, 136, 0.10);
+    --btn-bg:       #efefef;
+    --btn-hover:    #e0e0e0;
+    --toggle-bg:    #e0e0e0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* TOGGLE */
+  .toggle-wrap {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 100;
+  }
+
+  .toggle-btn {
+    background: var(--toggle-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .toggle-btn:hover { border-color: var(--accent); }
+
+  /* LAYOUT */
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 16px 0 36px;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 6vw, 40px);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .hero .tagline {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .contact-bar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: border-color 0.2s;
+  }
+
+  .contact-bar:hover { border-color: var(--accent); }
+
+  .contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+  }
+
+  .contact-item a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item a:hover { color: var(--accent); }
+
+  .contact-bar svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+
+  .bar {
+    color: var(--border);
+    font-size: 12px;
+  }
+
+  /* SECTION */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 36px 0 18px;
+  }
+
+  .section-divider hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-divider span {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px var(--accent-glow);
+  }
+
+  .card-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .card-date {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-glow);
+    border: 1px solid rgba(45, 212, 191, 0.25);
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  [data-theme="light"] .card-date {
+    border-color: rgba(13, 148, 136, 0.25);
+  }
+
+  .card-company {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    margin-top: 2px;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    position: relative;
+    padding-left: 14px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+  }
+
+  .card ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  /* SUMMARY */
+  .summary-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    transition: border-color 0.2s;
+  }
+
+  .summary-card:hover {
+    border-color: var(--accent);
+  }
+
+  .auth-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: var(--accent-glow);
+    border: 1px solid rgba(45, 212, 191, 0.25);
+    border-radius: 999px;
+    padding: 5px 12px;
+  }
+
+  [data-theme="light"] .auth-badge {
+    border-color: rgba(13, 148, 136, 0.25);
+  }
+
+  .auth-badge svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-glow);
+    border: 1px solid rgba(45, 212, 191, 0.25);
+    border-radius: 999px;
+    padding: 4px 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  [data-theme="light"] .skill-tag {
+    border-color: rgba(13, 148, 136, 0.25);
+  }
+
+  .skill-tag:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 8px var(--accent-glow);
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 48px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 28px; }
+    .card-header { flex-direction: column; }
+    .contact-bar { font-size: 12px; padding: 7px 14px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="toggle-wrap">
+    <button class="toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+      <span id="toggle-icon">🌙</span>
+      <span id="toggle-label">Dark</span>
+    </button>
+  </div>
+
+  <div class="page">
+
+    <div class="hero">
+      <h1>Sean Bennett</h1>
+      <p class="tagline">📍 Kings Park, NY</p>
+      <div class="contact-bar">
+        <span class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 7 10-7"></path></svg>
+          <a href="mailto:sean@bennett.ws">sean@bennett.ws</a>
+        </span>
+        <span class="bar">|</span>
+        <span class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8.68 19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <a href="tel:+19342216222">+1 934 221 6222</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="section-divider"><hr><span></span><hr></div>
+    <p class="section-title">Professional Summary</p>
+    <div class="summary-card">
+      Resourceful and innovative professional with expertise in administration, customer service, and leadership. Advanced understanding of customer needs with diligent attention to detail results in superior customer service and high levels of client satisfaction. Proven ability to make critical decisions during challenges, perform in highly visible positions, and work under pressure to meet deadlines. Looking for an opportunity in a dynamic organization where my skills will be fully utilized.
+      <br>
+      <span class="auth-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Authorized to work in the US for any employer
+      </span>
+    </div>
+
+    <!-- WORK EXPERIENCE -->
+    <div class="section-divider"><hr><span></span><hr></div>
+    <p class="section-title">Work Experience</p>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Banking Operations Specialist II</span>
+        <span class="card-date">Dec 2023 – Dec 2025</span>
+      </div>
+      <div class="card-company">EverBank — Islandia, NY</div>
+      <ul>
+        <li>Collaborated with departments onsite and remote throughout the EverBank footprint to ensure smooth day-to-day operations and keep business clients happy.</li>
+        <li>Prepped business client applications for onboarding to the EverBank system.</li>
+        <li>Opened and funded various business accounts and products.</li>
+        <li>Updated and maintained various daily financial reports.</li>
+        <li>Enrolled and onboarded business clients into the online banking platform.</li>
+        <li>Sent account-related communications and effectively resolved account-related issues.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Financial Services Representative</span>
+        <span class="card-date">Jul 2022 – Dec 2023</span>
+      </div>
+      <div class="card-company">Teachers Federal Credit Union — Kings Park, NY</div>
+      <ul>
+        <li>Expertly opened a wide range of accounts including checking, savings, CDs, IRAs, business accounts, and Trusts.</li>
+        <li>Provided exceptional member service by addressing inquiries, resolving issues, and offering tailored financial solutions.</li>
+        <li>Proficiently handled money transactions with accuracy and compliance with established banking procedures.</li>
+        <li>Leveraged DNA and Salesforce to efficiently manage accounts and maintain accurate records.</li>
+        <li>Utilized Google Workspace to streamline communication, collaborate on projects, and manage tasks.</li>
+        <li>Demonstrated strong attention to detail and compliance with regulatory guidelines in all financial transactions.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Front Desk / Night Auditor</span>
+        <span class="card-date">Nov 2019 – Jul 2022</span>
+      </div>
+      <div class="card-company">Residence Inn by Marriott — Holtsville, NY</div>
+      <ul>
+        <li>Received guests professionally, exceeding their expectations from arrival to departure.</li>
+        <li>Supervised all levels of staff including entry and journey-level professionals.</li>
+        <li>Resolved critical issues in a time-sensitive environment using excellent analytical skills.</li>
+        <li>Communicated guest feedback and survey results to departments in a timely manner.</li>
+        <li>Printed and maintained daily records and reports of hotel data at the close of each business day.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Office Services Associate</span>
+        <span class="card-date">Apr 2017 – Sep 2019</span>
+      </div>
+      <div class="card-company">C&amp;W Services — Bethpage, NY</div>
+      <ul>
+        <li>Directed front-desk operations ensuring customer service met high standards for guest satisfaction.</li>
+        <li>Acted as first point of telephone contact with new and established customers.</li>
+        <li>Collaborated with compliance unit to resolve customer issues and maintain high satisfaction levels.</li>
+        <li>Assisted in execution of initiatives that streamlined business processes for increased efficiency.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Mailroom Clerk</span>
+        <span class="card-date">Jan 2003 – Apr 2017</span>
+      </div>
+      <div class="card-company">Altice USA — Woodbury, NY</div>
+      <ul>
+        <li>Delivered SOP training to employees and facilitated cross-functional workgroups.</li>
+        <li>Forged and maintained solid relationships, working collaboratively with team members.</li>
+        <li>Enforced policies and procedures, attaining optimum standards for customer service, quality, and productivity.</li>
+        <li>Worked closely with upper management on sales-building plans, people development, and operational improvements.</li>
+      </ul>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section-divider"><hr><span></span><hr></div>
+    <p class="section-title">Education</p>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Liberal Arts / Music</span>
+        <span class="card-date">Aug 2000 – Aug 2002</span>
+      </div>
+      <div class="card-company">Nassau Community College — Garden City, NY</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">High School Diploma</span>
+        <span class="card-date">Sep 1996 – Jun 2000</span>
+      </div>
+      <div class="card-company">Hicksville High School — Hicksville, NY</div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section-divider"><hr><span></span><hr></div>
+    <p class="section-title">Skills</p>
+    <div class="card">
+      <div class="skills-grid">
+        <span class="skill-tag">Banking Operations</span>
+        <span class="skill-tag">Financial Services</span>
+        <span class="skill-tag">Account Management</span>
+        <span class="skill-tag">Customer Service</span>
+        <span class="skill-tag">CRM Systems</span>
+        <span class="skill-tag">Salesforce</span>
+        <span class="skill-tag">Google Workspace</span>
+        <span class="skill-tag">Microsoft Excel</span>
+        <span class="skill-tag">Microsoft Word</span>
+        <span class="skill-tag">Microsoft Outlook</span>
+        <span class="skill-tag">Money Handling</span>
+        <span class="skill-tag">Cash Management</span>
+        <span class="skill-tag">Financial Transactions</span>
+        <span class="skill-tag">Financial Regulations</span>
+        <span class="skill-tag">Data Analysis</span>
+        <span class="skill-tag">Problem Solving</span>
+        <span class="skill-tag">Attention to Detail</span>
+        <span class="skill-tag">Team Collaboration</span>
+        <span class="skill-tag">Time Management</span>
+        <span class="skill-tag">Conflict Management</span>
+        <span class="skill-tag">Communication Skills</span>
+        <span class="skill-tag">Sales Experience</span>
+        <span class="skill-tag">Hospitality</span>
+      </div>
+    </div>
+
+    <footer>
+      <a href="https://sean.bennett.ws/">SEAN.BENNETT.WS</a>
+    </footer>
+
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('toggle-icon').textContent = isDark ? '☀️' : '🌙';
+      document.getElementById('toggle-label').textContent = isDark ? 'Light' : 'Dark';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+
+    // Restore saved preference
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+      document.getElementById('toggle-icon').textContent = saved === 'light' ? '☀️' : '🌙';
+      document.getElementById('toggle-label').textContent = saved === 'light' ? 'Light' : 'Dark';
+    }
+  </script>
+
+</body>
+</html>
