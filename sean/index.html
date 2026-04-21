@@ -184,7 +184,7 @@
 
     /* ---- Dark/Light Mode Toggle ---- */
     .toggle-wrap {
-      position: fixed;
+      position: abdsolute;
       top: 16px;
       right: 16px;
       z-index: 100;
@@ -214,6 +214,7 @@
 
     /* ---- Profile Card ---- */
     .card {
+      position: relative;
       width: 100%;
       max-width: 480px;
       display: flex;
@@ -378,22 +379,22 @@
 <body>
 
   <!-- ============================================================
-    DARK / LIGHT MODE TOGGLE
-    No editing needed — this works automatically.
-  ============================================================ -->
-
-  <div class="toggle-wrap">
-    <button class="toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
-      <span class="toggle-icon" id="toggle-icon">🌙</span>
-      <span id="toggle-label">Dark</span>
-    </button>
-  </div>
-
-  <!-- ============================================================
     PROFILE CARD
   ============================================================ -->
 
   <div class="card">
+    
+      <!-- ============================================================
+    DARK / LIGHT MODE TOGGLE
+    No editing needed — this works automatically.
+  ============================================================ -->
+    
+    
+<div class="toggle-wrap">
+  <button class="toggle-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <span id="theme-icon">☀️</span>
+  </button>
+</div>
 
 
 <!-- AVATAR
@@ -502,18 +503,15 @@
     TOGGLE SCRIPT — no editing needed
   ============================================================ -->
 
-  <script>
-    // Page loads in dark mode by default.
-    // The toggle button switches between dark and light.
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('theme-icon').textContent = isDark ? '☀️' : '🌙';
+  }
+</script>
 
-    function toggleTheme() {
-  const html = document.documentElement;
-  const isDark = html.getAttribute('data-theme') === 'dark';
-  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  document.getElementById('toggle-icon').textContent = isDark ? '☀️' : '🌙';
-  document.getElementById('toggle-label').textContent = isDark ? 'Light' : 'Dark';
-}
-  </script>
 
 
 
